@@ -28,8 +28,8 @@ import java.util.Map;
 public class SecurityConfig {
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
-    @Value("${server.ip}")
-    private String serverIp;
+//    @Value("${server.ip}")
+//    private String serverIp;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -125,7 +125,7 @@ public class SecurityConfig {
                 .cors(cors->cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowCredentials(true);
-                    config.addAllowedOrigin(serverIp);
+                    config.addAllowedOrigin("http://localhost:3000");
                     config.addAllowedHeader("*");
                     config.addAllowedMethod("*");
 
